@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_api/services/journal_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/home_screen/home_screen.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
+
+  JournalService service = JournalService();
+
+  await service.register("Olá mundo");
+
+  await service.get();
 }
 
 class MyApp extends StatelessWidget {
