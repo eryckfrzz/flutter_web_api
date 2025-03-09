@@ -5,7 +5,7 @@ abstract class JournalDAO {
 
   delete(int id);
 
-  Future<List<Journal>> get();
+  Future<List<Journal>> getAll();
 
   update(Journal journal);
 }

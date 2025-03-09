@@ -14,18 +14,20 @@ class JournalDAOimpl implements JournalDAO {
   Uri uri = Uri.parse('http://192.168.10.106:3000/journals');
 
   @override
-  delete(int id) {
-    // TODO: implement delete
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<List<Journal>> get() async {
+  Future<List<Journal>> getAll() async {
     try {
       http.Response response = await client.get(uri);
 
       if (response.statusCode == 200) {
-        print("Resgistros(o) pesquisados(o) com sucesso!");
+        List<Journal> list = [];
+
+        List<dynamic> listDynamic = json.decode(response.body);
+
+        for (var jsonMap in listDynamic) {
+          list.add(Journal.fromMap(jsonMap));
+        }
+        print(list.length);
+        print("Resgistros pesquisados com sucesso!");
       } else {
         print('Erro: ${response.statusCode}');
         print(response.body);
@@ -64,6 +66,12 @@ class JournalDAOimpl implements JournalDAO {
   @override
   update(Journal journal) {
     // TODO: implement update
+    throw UnimplementedError();
+  }
+
+  @override
+  delete(int id) {
+    // TODO: implement delete
     throw UnimplementedError();
   }
 }

@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'dart:convert';
+
 import 'package:uuid/uuid.dart';
 
 class Journal {
@@ -37,5 +39,14 @@ class Journal {
   @override
   String toString() {
     return 'Journal(id: $id, content: $content, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  factory Journal.fromMap(Map<String, dynamic> map) {
+    return Journal(
+      id: map['id'] as String,
+      content: map['content'] as String,
+      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt'] as int),
+      updatedAt: DateTime.fromMillisecondsSinceEpoch(map['updatedAt'] as int),
+    );
   }
 }
