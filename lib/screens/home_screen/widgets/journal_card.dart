@@ -10,7 +10,6 @@ class JournalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     if (journal != null) {
       return InkWell(
         onTap: () {},
@@ -86,7 +85,13 @@ class JournalCard extends StatelessWidget {
               createdAt: showedDate,
               updatedAt: showedDate,
             ),
-          );
+          ).then((value) {
+            if (value != null && value == true) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text('Registro feito com sucesso!'),),
+              );
+            }
+          },);
         },
         child: Container(
           height: 115,
