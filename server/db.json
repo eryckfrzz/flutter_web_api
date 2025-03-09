@@ -1,7 +1,7 @@
 {
   "learnhttp": [
     {
-      "id": 1,
+      "id": "1",
       "content": "Exemplo de conteúdo"
     },
     {
@@ -11,6 +11,26 @@
     {
       "id": "f78b",
       "content": "Olá mundo"
+    }
+  ],
+  "journals": [
+    {
+      "id": "4b84d260-fd0e-11ef-83cb-55e3c4e31d7d",
+      "content": "",
+      "createdAt": 1741542331028,
+      "updatedAt": 1741542331028
+    },
+    {
+      "id": "5cccf480-fd0e-11ef-a39c-55f1b06b8ccc",
+      "content": "",
+      "createdAt": 1741542360025,
+      "updatedAt": 1741542360025
+    },
+    {
+      "id": "1903f040-fd0f-11ef-b138-37e0600b1874",
+      "content": "",
+      "createdAt": 1741542675754,
+      "updatedAt": 1741542675754
     }
   ]
 }

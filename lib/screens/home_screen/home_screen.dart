@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_api/database/database.dart';
 import 'package:flutter_web_api/screens/home_screen/widgets/home_screen_list.dart';
 
-import '../../models/journal.dart';
+import '../../domain/models/journal.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

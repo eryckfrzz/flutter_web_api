@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_api/helpers/weekday.dart';
-import 'package:flutter_web_api/models/journal.dart';
+import 'package:flutter_web_api/domain/models/journal.dart';
+import 'package:uuid/uuid.dart';
 
 class JournalCard extends StatelessWidget {
   final Journal? journal;
@@ -9,17 +10,14 @@ class JournalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     if (journal != null) {
       return InkWell(
         onTap: () {},
         child: Container(
           height: 115,
           margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black87,
-            ),
-          ),
+          decoration: BoxDecoration(border: Border.all(color: Colors.black87)),
           child: Row(
             children: [
               Column(
@@ -31,16 +29,18 @@ class JournalCard extends StatelessWidget {
                     decoration: const BoxDecoration(
                       color: Colors.black54,
                       border: Border(
-                          right: BorderSide(color: Colors.black87),
-                          bottom: BorderSide(color: Colors.black87)),
+                        right: BorderSide(color: Colors.black87),
+                        bottom: BorderSide(color: Colors.black87),
+                      ),
                     ),
                     padding: const EdgeInsets.all(16),
                     child: Text(
                       journal!.createdAt.day.toString(),
                       style: const TextStyle(
-                          fontSize: 32,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                        fontSize: 32,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Container(
@@ -48,9 +48,7 @@ class JournalCard extends StatelessWidget {
                     width: 75,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                      border: Border(
-                        right: BorderSide(color: Colors.black87),
-                      ),
+                      border: Border(right: BorderSide(color: Colors.black87)),
                     ),
                     padding: const EdgeInsets.all(8),
                     child: Text(WeekDay(journal!.createdAt.weekday).short),
@@ -78,7 +76,18 @@ class JournalCard extends StatelessWidget {
       );
     } else {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            'journal-add',
+            arguments: Journal(
+              id: Uuid().v1(),
+              content: "",
+              createdAt: showedDate,
+              updatedAt: showedDate,
+            ),
+          );
+        },
         child: Container(
           height: 115,
           alignment: Alignment.center,

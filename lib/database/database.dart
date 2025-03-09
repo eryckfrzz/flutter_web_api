@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter_web_api/helpers/phrases.dart';
 import 'package:uuid/uuid.dart';
 
-import '../models/journal.dart';
+import '../domain/models/journal.dart';
 
 Map<String, Journal> generateRandomDatabase({
   required int maxGap, // Tamanho máximo da janela de tempo
