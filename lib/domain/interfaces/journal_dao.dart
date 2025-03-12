@@ -7,5 +7,5 @@ abstract class JournalDAO {
 
   Future<List<Journal>> getAll();
 
-  update(Journal journal);
+  update(String id, Journal journal);
 }

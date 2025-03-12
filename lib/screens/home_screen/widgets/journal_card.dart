@@ -107,18 +107,25 @@ class JournalCard extends StatelessWidget {
       updatedAt: showedDate,
     );
 
+    Map<String, dynamic> map = {};
+
     if (journal != null) {
       innerJournal = journal;
+      map['is_editing'] = false;
+    }else{
+      map['is_editing'] = true;
     }
 
-    Navigator.pushNamed(context, 'journal-add', arguments: innerJournal).then((
+    map['journal'] = innerJournal;
+
+    Navigator.pushNamed(context, 'journal-add', arguments: map).then((
       value,
     ) {
       refreshFunction();
       if (value != null && value == true) {
         ScaffoldMessenger.of(
           context,
-        ).showSnackBar(SnackBar(content: Text('Registro feito com sucesso!'),),);
+        ).showSnackBar(SnackBar(content: Text('Registro feito com sucesso!')));
       } else {
         ScaffoldMessenger.of(
           context,

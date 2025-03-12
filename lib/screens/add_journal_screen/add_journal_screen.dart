@@ -5,7 +5,8 @@ import 'package:flutter_web_api/services/dao/journal_dao_impl.dart';
 
 class AddJournalScreen extends StatelessWidget {
   final Journal journal;
-  AddJournalScreen({super.key, required this.journal});
+  final bool isEditing;
+  AddJournalScreen({super.key, required this.journal, required this.isEditing});
 
   TextEditingController _contentController = TextEditingController();
 
@@ -26,9 +27,15 @@ class AddJournalScreen extends StatelessWidget {
 
               JournalDAOimpl journalDAOimpl = JournalDAOimpl();
 
-              final result = await journalDAOimpl.register(journal);
+              if (isEditing) {
+                final result = await journalDAOimpl.register(journal);
 
-              Navigator.pop(context, result);
+                Navigator.pop(context, result);
+              } else {
+                final result = journalDAOimpl.update(journal.id, journal);
+
+                Navigator.pop(context, result);
+              }
             },
             icon: Icon(Icons.check),
           ),

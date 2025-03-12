@@ -31,7 +31,6 @@ class JournalDAOimpl implements JournalDAO {
         print("Resgistros pesquisados com sucesso!");
 
         return list;
-        
       } else {
         print('Erro: ${response.statusCode}');
         print(response.body);
@@ -71,9 +70,26 @@ class JournalDAOimpl implements JournalDAO {
   }
 
   @override
-  update(Journal journal) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<bool> update(String id, Journal journal) async {
+    try {
+      String jsonJournal = json.encode(journal.toMap());
+
+      http.Response response = await client.put(
+        Uri.parse('http://192.168.10.100:3000/journals/${id}'),
+        headers: {'Content-type': 'application/json'},
+        body: jsonJournal,
+      );
+
+      if (response.statusCode == 201) {
+        print("Resgistro pesquisado com sucesso!");
+        return true;
+      }
+    } catch (e) {
+      print(e);
+      print("Erro ao registrar!");
+    }
+
+    return false;
   }
 
   @override
