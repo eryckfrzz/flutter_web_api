@@ -6,13 +6,21 @@ import 'package:uuid/uuid.dart';
 class JournalCard extends StatelessWidget {
   final Journal? journal;
   final DateTime showedDate;
-  const JournalCard({super.key, this.journal, required this.showedDate});
+  final Function refreshFunction;
+  const JournalCard({
+    super.key,
+    this.journal,
+    required this.showedDate,
+    required this.refreshFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (journal != null) {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          callAddJournalScreen(context, journal: journal);
+        },
         child: Container(
           height: 115,
           margin: const EdgeInsets.all(8),
@@ -76,22 +84,7 @@ class JournalCard extends StatelessWidget {
     } else {
       return InkWell(
         onTap: () {
-          Navigator.pushNamed(
-            context,
-            'journal-add',
-            arguments: Journal(
-              id: Uuid().v1(),
-              content: "",
-              createdAt: showedDate,
-              updatedAt: showedDate,
-            ),
-          ).then((value) {
-            if (value != null && value == true) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Registro feito com sucesso!'),),
-              );
-            }
-          },);
+          callAddJournalScreen(context);
         },
         child: Container(
           height: 115,
@@ -104,5 +97,33 @@ class JournalCard extends StatelessWidget {
         ),
       );
     }
+  }
+
+  callAddJournalScreen(BuildContext context, {Journal? journal}) {
+    Journal innerJournal = Journal(
+      id: Uuid().v1(),
+      content: "",
+      createdAt: showedDate,
+      updatedAt: showedDate,
+    );
+
+    if (journal != null) {
+      innerJournal = journal;
+    }
+
+    Navigator.pushNamed(context, 'journal-add', arguments: innerJournal).then((
+      value,
+    ) {
+      refreshFunction();
+      if (value != null && value == true) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Registro feito com sucesso!'),),);
+      } else {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('Registro mal sucedido!')));
+      }
+    });
   }
 }

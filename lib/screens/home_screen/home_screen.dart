@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_api/database/database.dart';
 import 'package:flutter_web_api/screens/home_screen/widgets/home_screen_list.dart';
+import 'package:flutter_web_api/services/dao/journal_dao_impl.dart';
 
 import '../../domain/models/journal.dart';
 
@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // O último dia apresentado na lista
   DateTime currentDay = DateTime.now();
+
+  JournalDAOimpl journalDAOimpl = JournalDAOimpl();
 
   // Tamanho da lista
   int windowPage = 10;
@@ -37,6 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(
           "${currentDay.day}  |  ${currentDay.month}  |  ${currentDay.year}",
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              refresh();
+            },
+            icon: Icon(Icons.refresh),
+          ),
+        ],
       ),
       body: ListView(
         controller: _listScrollController,
@@ -44,14 +54,21 @@ class _HomeScreenState extends State<HomeScreen> {
           windowPage: windowPage,
           currentDay: currentDay,
           database: database,
+          refreshFunction: refresh
         ),
       ),
     );
   }
 
-  void refresh() {
+  void refresh() async{
+     List<Journal> listJournal = await journalDAOimpl.getAll();
     setState(() {
-      database = generateRandomDatabase(maxGap: windowPage, amount: 3);
+     
+      database = {};
+
+      for (Journal journal in listJournal) {
+        database[journal.id] = journal;
+      }
     });
   }
 }

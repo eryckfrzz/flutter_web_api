@@ -11,7 +11,7 @@ class JournalDAOimpl implements JournalDAO {
     interceptors: [LoggerInterceptor()],
   );
 
-  Uri uri = Uri.parse('http://192.168.10.106:3000/journals');
+  Uri uri = Uri.parse('http://192.168.10.100:3000/journals');
 
   @override
   Future<List<Journal>> getAll() async {
@@ -26,8 +26,12 @@ class JournalDAOimpl implements JournalDAO {
         for (var jsonMap in listDynamic) {
           list.add(Journal.fromMap(jsonMap));
         }
+
         print(list.length);
         print("Resgistros pesquisados com sucesso!");
+
+        return list;
+        
       } else {
         print('Erro: ${response.statusCode}');
         print(response.body);
@@ -41,7 +45,7 @@ class JournalDAOimpl implements JournalDAO {
   }
 
   @override
-  register(Journal journal) async {
+  Future<bool> register(Journal journal) async {
     try {
       String jsonJournal = json.encode(journal.toMap());
 
@@ -53,6 +57,7 @@ class JournalDAOimpl implements JournalDAO {
 
       if (response.statusCode == 201) {
         print("Resgistro criado com sucesso!");
+        return true;
       } else {
         print('Erro: ${response.statusCode}');
         print(response.body);
@@ -61,6 +66,8 @@ class JournalDAOimpl implements JournalDAO {
       print(e);
       print("Erro ao registrar!");
     }
+
+    return false;
   }
 
   @override

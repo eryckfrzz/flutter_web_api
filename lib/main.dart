@@ -12,11 +12,13 @@ void main() async {
 
   Journal journalVazio = Journal.empty();
 
+  //await journalDAOimpl.getAll();
+
   // await journalDAOimpl.register(
   //   journalVazio
   // );
 
-  await journalDAOimpl.getAll();
+  //await journalDAOimpl.getAll();
   //await service.register("Olá mundo");
 
   //await service.get();
