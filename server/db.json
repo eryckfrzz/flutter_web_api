@@ -33,12 +33,6 @@
       "updatedAt": 1740777721168
     },
     {
-      "id": "17315040-fe19-11ef-b98b-0765227a3549",
-      "content": "cuida ",
-      "createdAt": 1741397706921,
-      "updatedAt": 1741397706921
-    },
-    {
       "id": "77ca0db0-fe1a-11ef-9b46-19383d660a1b",
       "content": "o",
       "createdAt": 1740879903205,
@@ -73,6 +67,12 @@
       "content": "hoje fui para a missa",
       "createdAt": 1740925488123,
       "updatedAt": 1740925488123
+    },
+    {
+      "id": "218e1e40-ff60-11ef-b101-7feecd637592",
+      "content": "treinar na academia ",
+      "createdAt": 1741019655176,
+      "updatedAt": 1741019655176
     }
   ]
 }

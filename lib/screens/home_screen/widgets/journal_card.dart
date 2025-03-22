@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_api/helpers/weekday.dart';
 import 'package:flutter_web_api/domain/models/journal.dart';
+import 'package:flutter_web_api/services/dao/journal_dao_impl.dart';
 import 'package:uuid/uuid.dart';
 
 class JournalCard extends StatelessWidget {
@@ -77,6 +78,12 @@ class JournalCard extends StatelessWidget {
                   ),
                 ),
               ),
+              IconButton(
+                onPressed: () {
+                  removeJournal(context);
+                },
+                icon: Icon(Icons.delete),
+              ),
             ],
           ),
         ),
@@ -112,15 +119,13 @@ class JournalCard extends StatelessWidget {
     if (journal != null) {
       innerJournal = journal;
       map['is_editing'] = false;
-    }else{
+    } else {
       map['is_editing'] = true;
     }
 
     map['journal'] = innerJournal;
 
-    Navigator.pushNamed(context, 'journal-add', arguments: map).then((
-      value,
-    ) {
+    Navigator.pushNamed(context, 'journal-add', arguments: map).then((value) {
       refreshFunction();
       if (value != null && value == true) {
         ScaffoldMessenger.of(
@@ -132,5 +137,21 @@ class JournalCard extends StatelessWidget {
         ).showSnackBar(SnackBar(content: Text('Registro mal sucedido!')));
       }
     });
+  }
+
+  removeJournal(BuildContext context) {
+    JournalDAOimpl journalDAOimpl = JournalDAOimpl();
+
+    if (journal != null) {
+      journalDAOimpl.delete(journal!.id).then((value) {
+        if (value) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text('Removido com sucesso!')));
+
+          refreshFunction();
+        }
+      });
+    }
   }
 }

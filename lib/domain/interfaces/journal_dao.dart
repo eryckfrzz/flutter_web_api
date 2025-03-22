@@ -3,7 +3,7 @@ import 'package:flutter_web_api/domain/models/journal.dart';
 abstract class JournalDAO {
   register(Journal journal);
 
-  delete(int id);
+  delete(String id);
 
   Future<List<Journal>> getAll();
 
