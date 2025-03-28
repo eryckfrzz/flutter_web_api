@@ -11,53 +11,20 @@
       "id": "w67phNm"
     },
     {
-      "email": "teste2@gmail.com",
-      "password": "$2a$10$gz1eb6vx6Mu5hefyiYok7er2nMnLh.O6hxqVEZ0IW/KUuCLJxOKcG",
-      "id": "EQOlY8a"
+      "email": "anaclara@gmail.com",
+      "password": "$2a$10$XrBCM3kDQYhhWg9dMDkzuuWngccS9TPbobxuYaRBCPQeE/vNt5bua",
+      "id": "qu7itNA"
     },
     {
-      "email": "teste3@gmail.com",
-      "password": "$2a$10$488W9MMHDctqxCbMHDESluQLnL4e3EaO3WqObTtt3EjMqkunvnQ7y",
-      "id": "5hbMNu8"
-    },
-    {
-      "email": "teste4@gmail.com",
-      "password": "$2a$10$6i3DlnIHzozyT5YJzJ/MOO2XElMYRO4Eyc1LwDkIpivBOgQAoGQK6",
-      "id": "VTc8ZEV"
-    },
-    {
-      "email": "teste5@gmail.com",
-      "password": "$2a$10$jfYc9Y/XCVatmV2fsENdoeNXsnMuz60ze8fe.pHSRFi9otwUiDBhO",
-      "id": "w5JuBNi"
-    },
-    {
-      "email": "teste6@gmail.com",
-      "password": "$2a$10$iNzjjTKefG1g0m2DzhjjQOtYxI9a69.wteE4PnrtRd7hI8Xm0kQ5G",
-      "id": "pOgOvxt"
-    },
-    {
-      "email": "teste7@gmail.com",
-      "password": "$2a$10$Z8T5uoe8ZP0EL6JgSe0V4OvF0M9W4GA79H0vL4NtViOkMrfUVYw3G",
-      "id": "CMfQ5oU"
-    },
-    {
-      "email": "teste8@gmail.com",
-      "password": "$2a$10$puRY0aSlvrC/U1fvNJBRUu5a.MEbxW/qXRcjESjdo0ALsq51RSF2a",
-      "id": "BFyt8Ai"
+      "email": "kaio@gmail.com",
+      "password": "$2a$10$EYEF9x6QnbKRLFBp16HGiuuF69CDp00l8Eo8Fy0q1b0EOtTeh2Lue",
+      "id": "P6kydMZ"
     }
   ],
   "learnhttp": [
     {
       "id": "1",
       "content": "Exemplo de conteúdo"
-    },
-    {
-      "id": "0a86",
-      "content": "Olá mundo"
-    },
-    {
-      "id": "f78b",
-      "content": "Olá mundo"
     }
   ],
   "journals": [
@@ -78,48 +45,6 @@
       "content": "cuida",
       "createdAt": 1740777721168,
       "updatedAt": 1740777721168
-    },
-    {
-      "id": "77ca0db0-fe1a-11ef-9b46-19383d660a1b",
-      "content": "o",
-      "createdAt": 1740879903205,
-      "updatedAt": 1740879903205
-    },
-    {
-      "id": "32217400-fe1b-11ef-92f3-27a1fe8b5f48",
-      "content": "oi",
-      "createdAt": 1740966614737,
-      "updatedAt": 1740966614737
-    },
-    {
-      "id": "a4c35c30-fe75-11ef-a6af-9900d38b408b",
-      "content": "ola",
-      "createdAt": 1740832601537,
-      "updatedAt": 1740832601537
-    },
-    {
-      "id": "0aefdd70-fe77-11ef-a6af-9900d38b408b",
-      "content": "andei de bicicleta ",
-      "createdAt": 1741005401537,
-      "updatedAt": 1741005401537
-    },
-    {
-      "id": "f5f7b200-fe7e-11ef-b6a9-65acb44a2ab2",
-      "content": "joguei futebol hoje",
-      "createdAt": 1741441453887,
-      "updatedAt": 1741441453887
-    },
-    {
-      "id": "9bd7bd00-fe84-11ef-80d6-5d52d355891c",
-      "content": "hoje fui para a missa",
-      "createdAt": 1740925488123,
-      "updatedAt": 1740925488123
-    },
-    {
-      "id": "218e1e40-ff60-11ef-b101-7feecd637592",
-      "content": "treinar na academia ",
-      "createdAt": 1741019655176,
-      "updatedAt": 1741019655176
     }
   ]
 }

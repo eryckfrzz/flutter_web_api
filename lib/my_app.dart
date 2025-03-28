@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_api/domain/models/journal.dart';
 import 'package:flutter_web_api/screens/add_journal_screen/add_journal_screen.dart';
 import 'package:flutter_web_api/screens/home_screen/home_screen.dart';
+import 'package:flutter_web_api/screens/login_screen/login_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,8 +25,11 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.light,
-      initialRoute: "home",
-      routes: {"home": (context) => const HomeScreen()},
+      initialRoute: "login",
+      routes: {
+        "home": (context) => const HomeScreen(),
+        "login": (context) => LoginScreen(),
+      },
       onGenerateRoute: (settings) {
         if (settings.name == 'journal-add') {
           Map<String, dynamic> map = settings.arguments as Map<String, dynamic>;
