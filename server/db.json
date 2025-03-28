@@ -1,4 +1,51 @@
 {
+  "users": [
+    {
+      "id": "0580",
+      "email": "kaio1@gmail.com",
+      "senha": "123456"
+    },
+    {
+      "email": "teste@gmail.com",
+      "password": "$2a$10$sjqQfJ/6LJW2U5VCF1/1Ce.W.wTeCuyoDqf2.Lm9HbBIqfz11Ax2O",
+      "id": "w67phNm"
+    },
+    {
+      "email": "teste2@gmail.com",
+      "password": "$2a$10$gz1eb6vx6Mu5hefyiYok7er2nMnLh.O6hxqVEZ0IW/KUuCLJxOKcG",
+      "id": "EQOlY8a"
+    },
+    {
+      "email": "teste3@gmail.com",
+      "password": "$2a$10$488W9MMHDctqxCbMHDESluQLnL4e3EaO3WqObTtt3EjMqkunvnQ7y",
+      "id": "5hbMNu8"
+    },
+    {
+      "email": "teste4@gmail.com",
+      "password": "$2a$10$6i3DlnIHzozyT5YJzJ/MOO2XElMYRO4Eyc1LwDkIpivBOgQAoGQK6",
+      "id": "VTc8ZEV"
+    },
+    {
+      "email": "teste5@gmail.com",
+      "password": "$2a$10$jfYc9Y/XCVatmV2fsENdoeNXsnMuz60ze8fe.pHSRFi9otwUiDBhO",
+      "id": "w5JuBNi"
+    },
+    {
+      "email": "teste6@gmail.com",
+      "password": "$2a$10$iNzjjTKefG1g0m2DzhjjQOtYxI9a69.wteE4PnrtRd7hI8Xm0kQ5G",
+      "id": "pOgOvxt"
+    },
+    {
+      "email": "teste7@gmail.com",
+      "password": "$2a$10$Z8T5uoe8ZP0EL6JgSe0V4OvF0M9W4GA79H0vL4NtViOkMrfUVYw3G",
+      "id": "CMfQ5oU"
+    },
+    {
+      "email": "teste8@gmail.com",
+      "password": "$2a$10$puRY0aSlvrC/U1fvNJBRUu5a.MEbxW/qXRcjESjdo0ALsq51RSF2a",
+      "id": "BFyt8Ai"
+    }
+  ],
   "learnhttp": [
     {
       "id": "1",

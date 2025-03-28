@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_api/helpers/weekday.dart';
 import 'package:flutter_web_api/domain/models/journal.dart';
+import 'package:flutter_web_api/screens/commom/confirmation_dialog.dart';
 import 'package:flutter_web_api/services/dao/journal_dao_impl.dart';
 import 'package:uuid/uuid.dart';
 
@@ -143,15 +144,27 @@ class JournalCard extends StatelessWidget {
     JournalDAOimpl journalDAOimpl = JournalDAOimpl();
 
     if (journal != null) {
-      journalDAOimpl.delete(journal!.id).then((value) {
-        if (value) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text('Removido com sucesso!')));
+      showConfirmationDialog(
+        context,
+        content:
+            "Deseja realmente remover o diário?",
+        affirmativeOption: "Remover",
+      ).then((value) {
+        if(value != null){
+          if (value) {
+          journalDAOimpl.delete(journal!.id).then((value) {
+            if (value) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text('Removido com sucesso!')));
 
-          refreshFunction();
+              refreshFunction();
+            }
+          },);
         }
-      });
+        }
+        
+      },);
     }
   }
 }

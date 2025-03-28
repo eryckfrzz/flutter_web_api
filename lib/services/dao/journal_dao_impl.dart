@@ -11,7 +11,7 @@ class JournalDAOimpl implements JournalDAO {
     interceptors: [LoggerInterceptor()],
   );
 
-  Uri uri = Uri.parse('http://192.168.249.216:3000/journals');
+  Uri uri = Uri.parse('http://192.168.10.101:3000/journals');
 
   @override
   Future<List<Journal>> getAll() async {
@@ -75,7 +75,7 @@ class JournalDAOimpl implements JournalDAO {
       String jsonJournal = json.encode(journal.toMap());
 
       http.Response response = await client.put(
-        Uri.parse('http://192.168.249.216:3000/journals/${id}'),
+        Uri.parse('http://192.168.10.101:3000/journals/${id}'),
         headers: {'Content-type': 'application/json'},
         body: jsonJournal,
       );
@@ -96,7 +96,7 @@ class JournalDAOimpl implements JournalDAO {
   Future<bool> delete(String id) async {
     try {
       http.Response response = await http.delete(
-        Uri.parse('http://192.168.249.216:3000/journals/${id}'),
+        Uri.parse('http://192.168.10.101:3000/journals/${id}'),
       );
 
       if (response.statusCode == 200) {
