@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_web_api/domain/interfaces/journal_dao.dart';
 import 'package:flutter_web_api/domain/models/journal.dart';
+import 'package:flutter_web_api/domain/models/url.dart';
 import 'package:flutter_web_api/services/http_interceptors.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http/intercepted_client.dart';
@@ -11,12 +12,14 @@ class JournalDAOimpl implements JournalDAO {
     interceptors: [LoggerInterceptor()],
   );
 
-  Uri uri = Uri.parse('http://192.168.10.101:3000/journals');
+  Url apiUrl = Url();
+
+  //Uri uri = Uri.parse('http://192.168.10.101:3000/journals');
 
   @override
   Future<List<Journal>> getAll() async {
     try {
-      http.Response response = await client.get(uri);
+      http.Response response = await client.get(apiUrl.getUri());
 
       if (response.statusCode == 200) {
         List<Journal> list = [];
@@ -49,7 +52,7 @@ class JournalDAOimpl implements JournalDAO {
       String jsonJournal = json.encode(journal.toMap());
 
       http.Response response = await client.post(
-        uri,
+        apiUrl.getUri(),
         headers: {"content-type": "application/json"},
         body: jsonJournal,
       );
@@ -75,7 +78,8 @@ class JournalDAOimpl implements JournalDAO {
       String jsonJournal = json.encode(journal.toMap());
 
       http.Response response = await client.put(
-        Uri.parse('http://192.168.10.101:3000/journals/${id}'),
+        Uri.parse('$apiUrl/journals/${id}'),
+        //Uri.parse('http://192.168.10.101:3000/journals/${id}'),
         headers: {'Content-type': 'application/json'},
         body: jsonJournal,
       );
@@ -96,7 +100,8 @@ class JournalDAOimpl implements JournalDAO {
   Future<bool> delete(String id) async {
     try {
       http.Response response = await http.delete(
-        Uri.parse('http://192.168.10.101:3000/journals/${id}'),
+        Uri.parse('$apiUrl/journals/${id}'),
+        //Uri.parse('http://192.168.10.101:3000/journals/${id}'),
       );
 
       if (response.statusCode == 200) {

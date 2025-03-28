@@ -1,4 +1,5 @@
 import 'package:flutter_web_api/domain/interfaces/users_dao.dart';
+import 'package:flutter_web_api/domain/models/url.dart';
 import 'package:flutter_web_api/services/http_interceptors.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_interceptor/http/intercepted_client.dart';
@@ -8,13 +9,16 @@ class UsersDaoImpl implements UsersDao {
     interceptors: [LoggerInterceptor()],
   );
 
-  Uri uri = Uri.parse('http://192.168.10.101:3000');
+  Url apiUrl = Url();
+
+  //Uri uri = Uri.parse('http://192.168.10.101:3000');
 
   @override
   login({required String email, required String password}) async {
     try {
       http.Response response = await client.post(
-        Uri.parse('http://192.168.10.101:3000/login'),
+        Uri.parse('$apiUrl/login'),
+        //Uri.parse('http://192.168.10.101:3000/login'),
         body: {'email': email, 'password': password},
       );
 
