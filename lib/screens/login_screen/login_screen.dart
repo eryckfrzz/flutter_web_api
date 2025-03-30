@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_api/screens/commom/confirmation_dialog.dart';
 import 'package:flutter_web_api/services/dao/users_dao_impl.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -37,19 +38,29 @@ class LoginScreen extends StatelessWidget {
                   const Text("Entre ou Registre-se"),
                   TextFormField(
                     controller: _emailController,
-                    decoration: const InputDecoration(label: Text("E-mail")),
+                    decoration: const InputDecoration(
+                      label: Text(
+                        "E-mail",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
                     keyboardType: TextInputType.emailAddress,
                   ),
                   TextFormField(
                     controller: _passwordController,
-                    decoration: const InputDecoration(label: Text("Senha")),
+                    decoration: const InputDecoration(
+                      label: Text(
+                        "Senha",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
                     keyboardType: TextInputType.visiblePassword,
                     maxLength: 16,
                     obscureText: true,
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      login();
+                      login(context);
                     },
                     child: const Text("Continuar"),
                   ),
@@ -62,10 +73,28 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  login() {
+  login(BuildContext context) async {
     String email = _emailController.text;
     String password = _passwordController.text;
 
-    service.login(email: email, password: password);
+  
+      bool result = await service.login(email: email, password: password);
+
+      if(result == false) {
+        showConfirmationDialog(
+          context,
+          title: "Usuário ainda não existe!",
+          content:
+              "Deseja criar um novo usuário a partir do e-mail $email e a senha inserida?",
+          affirmativeOption: "Criar",
+        ).then((value) async{
+          if (value) {
+            await service.register(email: email, password: password);
+          }
+        },);
+      }
+
+      
+    }
   }
-}
+

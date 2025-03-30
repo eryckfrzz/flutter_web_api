@@ -78,7 +78,7 @@ class JournalDAOimpl implements JournalDAO {
       String jsonJournal = json.encode(journal.toMap());
 
       http.Response response = await client.put(
-        Uri.parse('$apiUrl/journals/${id}'),
+        Uri.parse('${apiUrl.url}/journals/${id}'),
         //Uri.parse('http://192.168.10.101:3000/journals/${id}'),
         headers: {'Content-type': 'application/json'},
         body: jsonJournal,
@@ -100,7 +100,7 @@ class JournalDAOimpl implements JournalDAO {
   Future<bool> delete(String id) async {
     try {
       http.Response response = await http.delete(
-        Uri.parse('$apiUrl/journals/${id}'),
+        Uri.parse('${apiUrl.url}/journals/${id}'),
         //Uri.parse('http://192.168.10.101:3000/journals/${id}'),
       );
 

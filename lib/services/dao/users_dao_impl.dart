@@ -14,30 +14,63 @@ class UsersDaoImpl implements UsersDao {
   //Uri uri = Uri.parse('http://192.168.10.101:3000');
 
   @override
-  login({required String email, required String password}) async {
+  Future<bool> login({required String email, required String password}) async {
     try {
       http.Response response = await client.post(
-        Uri.parse('$apiUrl/login'),
+        Uri.parse('${apiUrl.url}/login'),
         //Uri.parse('http://192.168.10.101:3000/login'),
         body: {'email': email, 'password': password},
       );
 
       if (response.statusCode == 200) {
         print("Login realizado com sucesso!");
-        return response.body;
+        return true;
       } else {
         print('Erro: ${response.statusCode}');
         print(response.body);
+
+        // String content = json.decode(response.body);
+        // switch (content) {
+        //   case 'Cannot find user':
+        //     throw UserNotFindException();
+        // }
       }
     } catch (e) {
       print(e);
-      print("Erro ao registrar!");
+      print("Erro ao registar!");
     }
+
+    return false;
   }
 
   @override
-  register() {
-    // TODO: implement register
-    throw UnimplementedError();
+  Future<bool>register({required String email, required String password}) async {
+
+    try {
+      http.Response response = await client.post(
+      Uri.parse('${apiUrl.url}/register'),
+      body: {'email': email, 'password': password},
+    );
+
+      if (response.statusCode != 200) {
+
+        print('Erro: ${response.statusCode}');
+        print(response.body);
+        
+      } else {
+        print("Cadastro realizado com sucesso!");
+        return true;
+      }
+      
+    } catch (e) {
+      print(e);
+      print("Erro ao registar!");
+    }
+
+    return false;
+    
+    
   }
 }
+
+// class UserNotFindException implements Exception {}
